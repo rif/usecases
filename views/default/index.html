@@ -1,0 +1,12 @@
+{{extend 'layout.html'}}
+
+<h1>{{=T('Projects')}}</h1>
+
+{{if auth.has_membership('editor'):}}
+{{=form}}
+{{pass}}
+<ul>
+    {{for p in projects:}}
+    <li><a href="{{=URL('usecases', args=(p.id))}}">{{=p.name}}</a> {{=p.client}} {{=p.description}} {{if auth.has_membership('editor'):}}<a href="{{=URL('index', args=(p.id))}}">{{=T('Edit')}}</a>{{pass}}</li>
+    {{pass}}
+</ul>

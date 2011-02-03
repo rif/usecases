@@ -1,0 +1,14 @@
+{{extend 'layout.html'}}
+<h1>{{=T('Project')}}: {{=project.name}}</h1>
+
+<h2>{{=T('New Usecase')}}</h2>
+
+{{if auth.has_membership('editor'):}}
+{{=form}}
+{{pass}}
+
+<ul>
+{{for uc in usecases:}}
+<li><a href="{{=URL('uc_detail', args=(uc.id))}}">{{=T('UC') + ' ' + str(uc.number)}} {{=uc.name}}</a></li>
+{{pass}}
+</ul>

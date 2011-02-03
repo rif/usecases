@@ -1,0 +1,430 @@
+(dp1
+S'output'
+p2
+S''
+sS'layer'
+p3
+S'/Volumes/650Gb HD/web2py/web2py.app/Contents/Resources/applications/uc/controllers/default.py'
+p4
+sS'code'
+p5
+S'# -*- coding: utf-8 -*-\n\ndef index():\n    projects = db(db.project.id>0).select()\n    if len(request.args) > 0:\n        form = crud.update(db.project, db.project(request.args[0]))\n    else:\n        form = crud.create(db.project)\n    return dict(form = form, projects=projects)\n\ndef usecases():\n    p = db.project(request.args[0])\n    db.usecase.project.default = p.id\n    form = crud.create(db.usecase)\n    ucs = db(db.usecase.project == p.id).select()\n    return dict(project=p, form=form, usecases=ucs)\n\ndef uc_detail():\n    uc = db.usecase(request.args[0])\n    return dict(uc = uc)\n\ndef uc_edit():\n    id = request.args[0]\n    form = creud.update(db.usecase, db.usecase(id), next=URL(\'uc_detail\', args=(id)))\n    return dict(form = form)\n\ndef user():\n    """\n    exposes:\n    http://..../[app]/default/user/login\n    http://..../[app]/default/user/logout\n    http://..../[app]/default/user/register\n    http://..../[app]/default/user/profile\n    http://..../[app]/default/user/retrieve_password\n    http://..../[app]/default/user/change_password\n    use @auth.requires_login()\n        @auth.requires_membership(\'group name\')\n        @auth.requires_permission(\'read\',\'table name\',record_id)\n    to decorate functions that need access control\n    """\n    return dict(form=auth())\n\n\ndef download():\n    """\n    allows downloading of uploaded files\n    http://..../[app]/default/download/[filename]\n    """\n    return response.download(request,db)\n\n\ndef call():\n    """\n    exposes services. for example:\n    http://..../[app]/default/call/jsonrpc\n    decorate with @services.jsonrpc the functions to expose\n    supports xml, json, xmlrpc, jsonrpc, amfrpc, rss, csv\n    """\n    session.forget()\n    return service()\n\nresponse._vars=response._caller(uc_edit)\n'
+p6
+sS'snapshot'
+p7
+(dp8
+S'exception'
+p9
+(dp10
+S'__hash__'
+p11
+S"<method-wrapper '__hash__' of exceptions.NameError object at 0x1171c148>"
+p12
+sS'__setattr__'
+p13
+S"<method-wrapper '__setattr__' of exceptions.NameError object at 0x1171c148>"
+p14
+sS'__reduce_ex__'
+p15
+S'<built-in method __reduce_ex__ of exceptions.NameError object at 0x1171c148>'
+p16
+sS'__getslice__'
+p17
+S"<method-wrapper '__getslice__' of exceptions.NameError object at 0x1171c148>"
+p18
+sS'__getitem__'
+p19
+S"<method-wrapper '__getitem__' of exceptions.NameError object at 0x1171c148>"
+p20
+sS'__setstate__'
+p21
+S'<built-in method __setstate__ of exceptions.NameError object at 0x1171c148>'
+p22
+sS'__reduce__'
+p23
+S'<built-in method __reduce__ of exceptions.NameError object at 0x1171c148>'
+p24
+sS'__str__'
+p25
+S"<method-wrapper '__str__' of exceptions.NameError object at 0x1171c148>"
+p26
+sS'args'
+p27
+S'("global name \'creud\' is not defined",)'
+p28
+sS'__getattribute__'
+p29
+S"<method-wrapper '__getattribute__' of exceptions.NameError object at 0x1171c148>"
+p30
+sS'__class__'
+p31
+S"<type 'exceptions.NameError'>"
+p32
+sS'__delattr__'
+p33
+S"<method-wrapper '__delattr__' of exceptions.NameError object at 0x1171c148>"
+p34
+sS'__repr__'
+p35
+S"<method-wrapper '__repr__' of exceptions.NameError object at 0x1171c148>"
+p36
+sS'__dict__'
+p37
+S'{}'
+p38
+sS'__doc__'
+p39
+S"'Name not found globally.'"
+p40
+sS'__init__'
+p41
+S"<method-wrapper '__init__' of exceptions.NameError object at 0x1171c148>"
+p42
+sS'__new__'
+p43
+S'<built-in method __new__ of type object at 0x23f9640>'
+p44
+ssS'evalue'
+p45
+S"global name 'creud' is not defined"
+p46
+sS'request'
+p47
+(dp48
+S'function'
+p49
+S"'uc_edit'"
+p50
+sS'body'
+p51
+S'<cStringIO.StringO object at 0x1037a7e0>'
+p52
+sS'wsgi'
+p53
+S"<Storage {'start_response': <function <lambda> a...deflate', 'PATH_INFO': '/uc/default/uc_edit/1'}}>"
+p54
+sS'extension'
+p55
+S"'html'"
+p56
+sS'vars'
+p57
+S'<Storage {}>'
+p58
+sS'cid'
+p59
+S'None'
+p60
+sS'url'
+p61
+S'<gluon.html.XML object at 0x1037a630>'
+p62
+sS'raw_extension'
+p63
+S'None'
+p64
+sg27
+S"['1']"
+p65
+sS'controller'
+p66
+S"'default'"
+p67
+sS'cookies'
+p68
+S"<SimpleCookie: __utma='96992031.364672225.129534...79' sessionid='8ac6b2c4407419651e81807c39ff405f'>"
+p69
+sS'application'
+p70
+S"'uc'"
+p71
+sS'ajax'
+p72
+S'False'
+p73
+sS'client'
+p74
+S"'127.0.0.1'"
+p75
+sS'env'
+p76
+S"<Storage {'wsgi_multithread': True, 'http_accept...: '58291', 'path_info': '/uc/default/uc_edit/1'}>"
+p77
+sS'raw_args'
+p78
+S"'1'"
+p79
+sS'get_vars'
+p80
+S'<Storage {}>'
+p81
+sS'folder'
+p82
+S"'/Volumes/650Gb HD/web2py/web2py.app/Contents/Resources/applications/uc/'"
+p83
+sS'now'
+p84
+S'datetime.datetime(2011, 2, 1, 17, 24, 1, 609178)'
+p85
+sS'post_vars'
+p86
+S'<Storage {}>'
+p87
+ssS'frames'
+p88
+(lp89
+(dp90
+S'file'
+p91
+S'/Volumes/650Gb HD/web2py/web2py.app/Contents/Resources/gluon/restricted.py'
+p92
+sS'dump'
+p93
+(dp94
+sS'lnum'
+p95
+I188
+sS'lines'
+p96
+(dp97
+sS'call'
+p98
+S"(code='# -*- coding: utf-8 -*-\\n\\ndef index():\\n    projec...vice()\\n\\nresponse._vars=response._caller(uc_edit)\\n', environment={'A': <class 'gluon.html.A'>, 'Auth': <class 'gluon.tools.Auth'>, 'B': <class 'gluon.html.B'>, 'BEAUTIFY': <class 'gluon.html.BEAUTIFY'>, 'BODY': <class 'gluon.html.BODY'>, 'BR': <class 'gluon.html.BR'>, 'CENTER': <class 'gluon.html.CENTER'>, 'CLEANUP': <class 'gluon.validators.CLEANUP'>, 'CODE': <class 'gluon.html.CODE'>, 'CRYPT': <class 'gluon.validators.CRYPT'>, ...}, layer='/Volumes/650Gb HD/web2py/web2py.app/Contents/Resources/applications/uc/controllers/default.py')"
+p99
+sS'func'
+p100
+S'restricted'
+p101
+sa(dp102
+g91
+S'/Volumes/650Gb HD/web2py/web2py.app/Contents/Resources/applications/uc/controllers/default.py'
+p103
+sg93
+(dp104
+sg95
+I62
+sg96
+(dp105
+I51
+S''
+sI52
+S'def call():'
+p106
+sI53
+S'    """'
+p107
+sI54
+S'    exposes services. for example:'
+p108
+sI55
+S'    http://..../[app]/default/call/jsonrpc'
+p109
+sI56
+S'    decorate with @services.jsonrpc the functions to expose'
+p110
+sI57
+S'    supports xml, json, xmlrpc, jsonrpc, amfrpc, rss, csv'
+p111
+sI58
+S'    """'
+p112
+sI59
+S'    session.forget()'
+p113
+sI60
+S'    return service()'
+p114
+ssg98
+S'()'
+p115
+sg100
+S'<module>'
+p116
+sa(dp117
+g91
+S'/Volumes/650Gb HD/web2py/web2py.app/Contents/Resources/gluon/globals.py'
+p118
+sg93
+(dp119
+sg95
+I95
+sg96
+(dp120
+sg98
+S'(f=<function uc_edit at 0x1034f3f0>)'
+p121
+sg100
+S'<lambda>'
+p122
+sa(dp123
+g91
+S'/Volumes/650Gb HD/web2py/web2py.app/Contents/Resources/applications/uc/controllers/default.py'
+p124
+sg93
+(dp125
+sg95
+I24
+sg96
+(dp126
+I19
+S'    uc = db.usecase(request.args[0])'
+p127
+sI20
+S'    return dict(uc = uc)'
+p128
+sI21
+S''
+sI22
+S'def uc_edit():'
+p129
+sI23
+S'    id = request.args[0]'
+p130
+sI24
+S"    form = creud.update(db.usecase, db.usecase(id), next=URL('uc_detail', args=(id)))"
+p131
+sI25
+S'    return dict(form = form)'
+p132
+sI26
+S''
+sI27
+S'def user():'
+p133
+sI28
+S'    """'
+p134
+ssg98
+S'()'
+p135
+sg100
+S'uc_edit'
+p136
+sasS'pyver'
+p137
+S'Python 2.5.1: /Volumes/650Gb HD/web2py/web2py.app/Contents/MacOS/python'
+p138
+sS'session'
+p139
+(dp140
+S'_formkey[usecase/None]'
+p141
+S"'010c08f6-d98b-47c6-b3d7-fc488a2a7b96'"
+p142
+sS'_formkey[project/None]'
+p143
+S"'420f13ce-717e-40a2-bf41-039e4a3cba53'"
+p144
+sS'auth'
+p145
+S'None'
+p146
+sS'_formkey[project/1]'
+p147
+S"'d49c6ac59c76b66e2a0ff40ebdc3a834'"
+p148
+ssS'etype'
+p149
+S"<type 'exceptions.NameError'>"
+p150
+sS'date'
+p151
+S'Tue Feb  1 17:24:01 2011'
+p152
+sS'response'
+p153
+(dp154
+S'status'
+p155
+S'200'
+p156
+sg51
+S'<cStringIO.StringO object at 0x1037a120>'
+p157
+sg68
+S"<SimpleCookie: session_id_uc='127.0.0.1-dfb3032e-0008-493a-8a6e-67b71739aced'>"
+p158
+sS'_vars'
+p159
+S'None'
+p160
+sS'title'
+p161
+S"'uc'"
+p162
+sS'session_file'
+p163
+S"<open file '/Volumes/650Gb HD/web2py/web2py.app/...93a-8a6e-67b71739aced', mode 'rb+' at 0x1176a650>"
+p164
+sS'flash'
+p165
+S"''"
+p166
+sS'_custom_rollback'
+p167
+S'None'
+p168
+sS'session_id'
+p169
+S"'127.0.0.1-dfb3032e-0008-493a-8a6e-67b71739aced'"
+p170
+sS'headers'
+p171
+S"<Storage {'Expires': 'Tue, 01 Feb 2011 15:24:01 ...he, must-revalidate, post-check=0, pre-check=0'}>"
+p172
+sS'meta'
+p173
+S"<Storage {'keywords': 'web2py, python, framework... 'Web2py Enterprise Framework', 'author': 'you'}>"
+p174
+sS'session_filename'
+p175
+S"'/Volumes/650Gb HD/web2py/web2py.app/Contents/Res...ns/127.0.0.1-dfb3032e-0008-493a-8a6e-67b71739aced'"
+p176
+sS'postprocessing'
+p177
+S'[]'
+p178
+sS'menu'
+p179
+S"[(<lazyT 'Home'>, False, <gluon.html.XML object at 0x10366c10>, []), (<lazyT 'This App'>, False, <gluon.html.XML object at 0x10366270>, [(<lazyT 'Controller'>, False, <gluon.html.XML object at 0x10366390>), (<lazyT 'View'>, False, <gluon.html.XML object at 0x103664f0>), (<lazyT 'Layout'>, False, <gluon.html.XML object at 0x10366210>), (<lazyT 'Stylesheet'>, False, <gluon.html.XML object at 0x10366230>), (<lazyT 'DB Model'>, False, <gluon.html.XML object at 0x10366130>), (<lazyT 'Menu Model'>, False, <gluon.html.XML object at 0x103661f0>), (<lazyT 'Database'>, False, <gluon.html.XML object at 0x103661d0>), (<lazyT 'Errors'>, False, <gluon.html.XML object at 0x10366050>), (<lazyT 'About'>, False, <gluon.html.XML object at 0x10366190>)]), (<lazyT 'Resources'>, False, None, [(<lazyT 'Documentation'>, False, 'http://www.web2py.com/book', [(<lazyT 'Preface'>, False, 'http://www.web2py.com/book/default/chapter/00'), (<lazyT 'Introduction'>, False, 'http://www.web2py.com/book/default/chapter/01'), (<lazyT 'Python'>, False, 'http://www.web2py.com/book/default/chapter/02'), (<lazyT 'Overview'>, False, 'http://www.web2py.com/book/default/chapter/03'), (<lazyT 'The Core'>, False, 'http://www.web2py.com/book/default/chapter/04'), (<lazyT 'The Views'>, False, 'http://www.web2py.com/book/default/chapter/05'), (<lazyT 'Database'>, False, 'http://www.web2py.com/book/default/chapter/06'), (<lazyT 'Forms and Validators'>, False, 'http://www.web2py.com/book/default/chapter/07'), (<lazyT 'Access Control'>, False, 'http://www.web2py.com/book/default/chapter/08'), (<lazyT 'Services'>, False, 'http://www.web2py.com/book/default/chapter/09'), (<lazyT 'Ajax Recipes'>, False, 'http://www.web2py.com/book/default/chapter/10'), (<lazyT 'Deployment Recipes'>, False, 'http://www.web2py.com/book/default/chapter/11'), (<lazyT 'Other Recipes'>, False, 'http://www.web2py.com/book/default/chapter/12'), (<lazyT 'Buy this book'>, False, 'http://stores.lulu.com/web2py')]), (<lazyT 'Community'>, False, None, [(<lazyT 'Groups'>, False, 'http://www.web2py.com/examples/default/usergroups'), (<lazyT 'Twitter'>, False, 'http://twitter.com/web2py'), (<lazyT 'Live chat'>, False, 'http://mibbit.com/?channel=%23web2py&server=irc.mibbit.net'), (<lazyT 'User Voice'>, False, 'http://web2py.uservoice.com/')]), (<lazyT 'Web2py'>, False, 'http://www.web2py.com', [(<lazyT 'Download'>, False, 'http://www.web2py.com/examples/default/download'), (<lazyT 'Support'>, False, 'http://www.web2py.com/examples/default/support'), (<lazyT 'Quick Examples'>, False, 'http://web2py.com/examples/default/examples'), (<lazyT 'FAQ'>, False, 'http://web2py.com/AlterEgo'), (<lazyT 'Free Applications'>, False, 'http://web2py.com/appliances'), (<lazyT 'Plugins'>, False, 'http://web2py.com/plugins'), (<lazyT 'Recipes'>, False, 'http://web2pyslices.com/'), (<lazyT 'Demo'>, False, 'http://web2py.com/demo_admin'), (<lazyT 'Semantic'>, False, 'http://web2py.com/semantic'), (<lazyT 'Layouts'>, False, 'http://web2py.com/layouts'), (<lazyT 'Videos'>, False, 'http://www.web2py.com/examples/default/videos/')])])]"
+p180
+sS'_view_environment'
+p181
+S"{'A': <class 'gluon.html.A'>, 'Auth': <class 'gluon.tools.Auth'>, 'B': <class 'gluon.html.B'>, 'BEAUTIFY': <class 'gluon.html.BEAUTIFY'>, 'BODY': <class 'gluon.html.BODY'>, 'BR': <class 'gluon.html.BR'>, 'CENTER': <class 'gluon.html.CENTER'>, 'CLEANUP': <class 'gluon.validators.CLEANUP'>, 'CODE': <class 'gluon.html.CODE'>, 'CRYPT': <class 'gluon.validators.CRYPT'>, ...}"
+p182
+sS'subtitle'
+p183
+S"<lazyT 'customize me!'>"
+p184
+sS'session_id_name'
+p185
+S"'session_id_uc'"
+p186
+sS'_custom_commit'
+p187
+S'None'
+p188
+sS'_caller'
+p189
+S'<function <lambda> at 0x1034f4f0>'
+p190
+sS'files'
+p191
+S'[]'
+p192
+sS'view'
+p193
+S"'default/uc_edit.html'"
+p194
+ssS'locals'
+p195
+(dp196
+S'id'
+p197
+S"'1'"
+p198
+sssS'traceback'
+p199
+S'Traceback (most recent call last):\n  File "gluon/restricted.py", line 188, in restricted\n  File "/Volumes/650Gb HD/web2py/web2py.app/Contents/Resources/applications/uc/controllers/default.py", line 62, in <module>\n  File "gluon/globals.py", line 95, in <lambda>\n  File "/Volumes/650Gb HD/web2py/web2py.app/Contents/Resources/applications/uc/controllers/default.py", line 24, in uc_edit\nNameError: global name \'creud\' is not defined\n'
+p200
+s.

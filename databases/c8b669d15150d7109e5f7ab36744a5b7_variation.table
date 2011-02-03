@@ -1,0 +1,14 @@
+(dp1
+S'usecase'
+p2
+S'INTEGER REFERENCES usecase(id) ON DELETE CASCADE'
+p3
+sS'id'
+p4
+S'INTEGER PRIMARY KEY AUTOINCREMENT'
+p5
+sS'description'
+p6
+S'TEXT'
+p7
+s.

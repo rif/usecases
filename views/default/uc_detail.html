@@ -1,0 +1,46 @@
+{{extend 'layout.html'}}
+
+<h1>{{=T('UC') + ' ' + str(uc.number)}} {{=uc.name}}</h1>
+
+
+<table>
+  <tr>
+    <td><label>{{=T('Goal in context')}}:</label></td><td>{{=uc.goal_in_context}}</td>
+  </tr>
+  <tr>
+    <td><label>{{=T('Precondition')}}:</label></td><td>{{=uc.precondition}}</td>
+  </tr>
+  <tr>
+    <td><label>{{=T('Success')}}:</label></td><td>{{=uc.success}}</td>
+  </tr>
+  <tr>
+    <td><label>{{=T('Fail')}}:</label></td><td>{{=uc.fail}}</td>
+  </tr>
+  <tr>
+    <td><label>{{=T('Actors')}}:</label></td><td>{{=uc.actors}}</td>
+  </tr>
+  <tr>
+    <td><label>{{=T('Description')}}:</label></td><td>{{=MARKMIN(uc.description)}}</td>
+  </tr>
+  {{for ord,var in enumerate(uc.variation.select()):}}
+  <tr>
+    <td><label>{{=T('Variation')}} {{=ord+1}}:</label>
+      {{if auth.has_membership('editor'):}}
+      <br/>
+      <a href="{{=URL('var_add', args=(uc.id, var.id))}}">{{=T('Edit')}}</a>
+      {{pass}}</td><td>{{=MARKMIN(var.description)}}</td>
+  </tr>
+  {{pass}}
+  {{if uc.related_info:}}
+  <td><label>{{=T('Related information')}}:</label></td><td>{{=MARKMIN(uc.related_info)}}</td>
+  {{pass}}
+</table>
+
+{{if auth.has_membership('editor'):}}
+<div id="actions">
+<a href="{{=URL('uc_edit', args=(uc.id))}}">{{=T('Edit')}}</a>
+<a href="{{=URL('var_add', args=(uc.id))}}">{{=T('Add Variation')}}</a>
+</div>
+{{pass}}
+
+<a href="{{=URL('usecases', args=(uc.project.id))}}">{{=T('Back')}}</a>

@@ -1,0 +1,11 @@
+{{extend 'layout.html'}}
+
+<h1>{{=T('Projects')}}</h1>
+
+{{=form}}
+
+<ul>
+    {{for p in projects:}}
+    <li><a href="{{=Url('index', args=[p.id])}}">{{=p.name}}</a> {{=p.client}} {{=p.description}}</li>
+    {{pass}}
+</ul>

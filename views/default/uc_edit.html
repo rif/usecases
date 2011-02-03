@@ -1,0 +1,7 @@
+{{extend 'layout.html'}}
+
+<h1>{{=T('UC') + ' ' + str(uc.number)}} {{=uc.name}}</h1>
+
+{{=form}}
+
+<a href="{{=URL('uc_detail', args=(uc.id))}}">{{=T('Back')}}</a>

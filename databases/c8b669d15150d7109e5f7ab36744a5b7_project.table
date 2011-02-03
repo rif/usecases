@@ -1,0 +1,30 @@
+(dp1
+S'created_on'
+p2
+S'TIMESTAMP'
+p3
+sS'client'
+p4
+S'CHAR(512)'
+p5
+sS'descriptiontext'
+p6
+S'CHAR(512)'
+p7
+sS'description'
+p8
+S'TEXT'
+p9
+sS'id'
+p10
+S'INTEGER PRIMARY KEY AUTOINCREMENT'
+p11
+sS'created_by'
+p12
+S'INTEGER REFERENCES auth_user(id) ON DELETE CASCADE'
+p13
+sS'name'
+p14
+S'CHAR(512) UNIQUE'
+p15
+s.
