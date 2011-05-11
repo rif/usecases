@@ -12,7 +12,7 @@ def usecases():
     p = db.project(request.args[0])
     db.usecase.project.default = p.id
     form = crud.create(db.usecase)
-    ucs = db(db.usecase.project == p.id).select()
+    ucs = db(db.usecase.project == p.id).select(orderby=db.usecase.number)
     return dict(project=p, form=form, usecases=ucs)
 
 def uc_detail():
